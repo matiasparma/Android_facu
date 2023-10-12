@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 public class BienvenidaActivity extends AppCompatActivity {
     boolean valorArchivo;
     boolean valorTXT;
-    private static final int TIEMPO_ESPERA=2000;
+    private static final int TIEMPO_ESPERA=200;
     String archivos[];
 
     @Override

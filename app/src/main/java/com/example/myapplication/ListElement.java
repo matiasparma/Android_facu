@@ -1,16 +1,18 @@
 package com.example.myapplication;
 
-public class ListElement {
+import java.io.Serializable;
+
+public class ListElement implements Serializable {
     public String color;
     public String nombre;
     public String city;
-    public String status;
+    public String precio;
 
-    public ListElement(String color, String nombre, String city, String status) {
+    public ListElement(String color, String nombre, String city, String precio) {
         this.color = color;
         this.nombre = nombre;
         this.city = city;
-        this.status = status;
+        this.precio = precio;
     }
 
     public String getColor() {
@@ -37,11 +39,11 @@ public class ListElement {
         this.city = city;
     }
 
-    public String getStatus() {
-        return status;
+    public String getPrecio() {
+        return precio;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setPrecio(String status) {
+        this.precio = status;
     }
 }
