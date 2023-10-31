@@ -54,7 +54,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void setItems(List<ListElement> items){mData=items;}
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView iconImage;
-        TextView name ,city,status;
+        TextView name ,city,status,codigo;
         CardView cv;
         ViewHolder(View itemView){
             super(itemView);
@@ -63,12 +63,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             city=itemView.findViewById(R.id.cityTextView);
             status=itemView.findViewById(R.id.statusTextview);
             cv=itemView.findViewById(R.id.cv);
+            codigo=itemView.findViewById(R.id.codigoTextView);
         }
         void bindData(final ListElement item){
             iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
             name.setText(item.getNombre());
             city.setText(item.getCity());
-            status.setText(item.getPrecio());
+            status.setText("$"+item.getPrecio());
+            codigo.setText(item.getCodigo());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

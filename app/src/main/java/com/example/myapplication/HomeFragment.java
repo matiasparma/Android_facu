@@ -43,16 +43,16 @@ public class HomeFragment extends Fragment  {
     public void init(){
         elements=new ArrayList<>();
         elements2 = new ArrayList<>(elements);
-        elements.add(new ListElement("#565678","Pantalon","Argentina","10000"));
-        elements.add(new ListElement("#ffffff","Remera","bolivia","5000"));
-        elements.add(new ListElement("#000000","Ojotas","brasil","2000"));
-        elements.add(new ListElement("#f6567a","Zapatillas","Argentina","20000"));
-        elements.add(new ListElement("#d65678","Camisa","Argentina","15000"));
-        elements.add(new ListElement("#aa5678","Corbata","Argentina","6500"));
-        elements.add(new ListElement("#565678","Chaqueta","Argentina","14400"));
-        elements.add(new ListElement("#565678","Campera","Argentina","30000"));
-        elements.add(new ListElement("#565678","Medias","Argentina","5500"));
-        elements.add(new ListElement("#565678","Gorro","Argentina","3650"));
+        elements.add(new ListElement("1","#565678","Pantalon","Argentina","10000","pantalon","nike"));
+        elements.add(new ListElement("2","#ffffff","Remera","bolivia","5000","remera","adidas"));
+        elements.add(new ListElement("3","#000000","Ojotas","brasil","2000","ojotas","nike"));
+        elements.add(new ListElement("4","#f6567a","Zapatillas","Argentina","20000","zapatillas","adidas"));
+        elements.add(new ListElement("5","#d65678","Camisa","Argentina","15000","camisa","nike"));
+        elements.add(new ListElement("6","#aa5678","Corbata","Argentina","6500","corbata","adidas"));
+        elements.add(new ListElement("7","#565678","Chaqueta","Argentina","14400","chaqueta","Arg"));
+        elements.add(new ListElement("8","#565678","Campera","Argentina","30000","campera","nike"));
+        elements.add(new ListElement("9","#565678","Medias","Argentina","5500","media","nike"));
+        elements.add(new ListElement("10","#565678","Gorro","Argentina","3650","gorro","adidas"));
         Context context=getActivity();
         listAdapter=new ListAdapter(elements, context, new ListAdapter.OnItemClickListener() {
             @Override
