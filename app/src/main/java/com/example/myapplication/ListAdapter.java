@@ -66,7 +66,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             codigo=itemView.findViewById(R.id.codigoTextView);
         }
         void bindData(final ListElement item){
-            iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
             name.setText(item.getNombre());
             city.setText(item.getCity());
             status.setText("$"+item.getPrecio());

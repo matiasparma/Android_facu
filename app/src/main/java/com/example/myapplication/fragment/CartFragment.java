@@ -1,6 +1,7 @@
-package com.example.myapplication;
+package com.example.myapplication.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -15,6 +16,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Carrito;
+import com.example.myapplication.CarritoAdapter;
+import com.example.myapplication.DDBBCarrito;
+import com.example.myapplication.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -65,6 +70,7 @@ public class CartFragment extends Fragment {
     public void Carritototal(View v){
         double totalDouble=DDBBCarrito.obtenertotal(getActivity());
         totalString.setText(String.valueOf(totalDouble));
+
 
     }
 

@@ -11,9 +11,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.myapplication.fragment.AboutFragment;
+import com.example.myapplication.fragment.CartFragment;
+import com.example.myapplication.fragment.HomeFragment;
+import com.example.myapplication.fragment.SettingsFragment;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

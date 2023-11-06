@@ -3,7 +3,6 @@ package com.example.myapplication;
 import java.io.Serializable;
 
 public class ListElement implements Serializable {
-    public String color;
     public String nombre;
     public String city;
     public String precio;
@@ -37,8 +36,8 @@ public class ListElement implements Serializable {
         return codigo;
     }
 
-    public ListElement(String codigo, String color, String nombre, String city, String precio, String desc, String marca) {
-        this.color = color;
+    public ListElement(String codigo, String nombre, String city, String precio, String desc, String marca) {
+
         this.nombre = nombre;
         this.city = city;
         this.precio = precio;
@@ -47,13 +46,9 @@ public class ListElement implements Serializable {
         this.codigo=codigo;
     }
 
-    public String getColor() {
-        return color;
-    }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
+
+
 
     public String getNombre() {
         return nombre;

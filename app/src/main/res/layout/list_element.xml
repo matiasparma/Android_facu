@@ -13,72 +13,77 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-        android:orientation="vertical">
-        <RelativeLayout
-            android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iconImageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            app:srcCompat="@drawable/autoparte" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="6dp">
-            <ImageView
-                android:id="@+id/iconImageView"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp"
-                app:srcCompat="@drawable/aklogo"
-                android:layout_alignParentLeft="true"
-                />
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:layout_toEndOf="@id/iconImageView"
-                android:orientation="vertical"
-                android:layout_marginLeft="4dp"
-                android:layout_toRightOf="@id/iconImageView">
+                android:layout_marginStart="6dp"
+                android:text="titulo"
+                android:textColor="@color/black"
+                android:layout_marginTop="6dp"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cityTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="city"
+                android:layout_marginTop="6dp"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <TextView
-                    android:id="@+id/nameTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:text="Codelia"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/cityTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="precio"
-                    android:textSize="24sp"/>
+                    android:text="Código:"
+                    android:textSize="18sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginStart="6dp" />
                 <TextView
                     android:id="@+id/codigoTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="codigo"
-                    android:textSize="18sp"/>
+                    android:text="codigoN"
+                    android:layout_marginTop="6dp"
+                    android:textSize="18sp"
+                    android:layout_gravity="center_vertical" />
             </LinearLayout>
+
             <TextView
                 android:id="@+id/statusTextview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="6dp"
-                android:layout_marginRight="6dp"
-                android:text="Activo"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_alignParentEnd="true"/>
-
-
-        </RelativeLayout>
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="6dp"
+                android:text="Precio"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
-
 
 </androidx.cardview.widget.CardView>

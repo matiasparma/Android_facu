@@ -65,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
         android:layout_below="@+id/stockLabel"
         android:layout_alignParentStart="true"
@@ -87,17 +88,18 @@
         android:textSize="20sp" />
 
     <!-- Spinner -->
+
+    <!-- Botón "Comprar Ahora" -->
     <Spinner
         android:id="@+id/mySpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/stockLabel"
-        android:background="@drawable/dis_spinner"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="47dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="30dp" />
+        android:background="@drawable/dis_spinner" />
 
-    <!-- Botón "Comprar Ahora" -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBuyNow"
         android:layout_width="match_parent"
@@ -107,7 +109,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/btn_comprar"
-        android:onClick="borrarElementos"
         android:text="Comprar ahora"
         android:textColor="@color/white" />
 

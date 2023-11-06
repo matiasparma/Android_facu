@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,7 +14,15 @@ import android.util.EventLogTags;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.myapplication.ActivityController;
+import com.example.myapplication.ArchivoTXTController;
+import com.example.myapplication.DescriptionActivity;
+import com.example.myapplication.ListAdapter;
+import com.example.myapplication.ListElement;
+import com.example.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +36,8 @@ public class HomeFragment extends Fragment  {
     SearchView searchView;
 
     ListAdapter listAdapter;
+
+    Button botonCarrito, botonLogout;
 
 
     @Override
@@ -43,16 +54,20 @@ public class HomeFragment extends Fragment  {
     public void init(){
         elements=new ArrayList<>();
         elements2 = new ArrayList<>(elements);
-        elements.add(new ListElement("1","#565678","Pantalon","Argentina","10000","pantalon","nike"));
-        elements.add(new ListElement("2","#ffffff","Remera","bolivia","5000","remera","adidas"));
-        elements.add(new ListElement("3","#000000","Ojotas","brasil","2000","ojotas","nike"));
-        elements.add(new ListElement("4","#f6567a","Zapatillas","Argentina","20000","zapatillas","adidas"));
-        elements.add(new ListElement("5","#d65678","Camisa","Argentina","15000","camisa","nike"));
-        elements.add(new ListElement("6","#aa5678","Corbata","Argentina","6500","corbata","adidas"));
-        elements.add(new ListElement("7","#565678","Chaqueta","Argentina","14400","chaqueta","Arg"));
-        elements.add(new ListElement("8","#565678","Campera","Argentina","30000","campera","nike"));
-        elements.add(new ListElement("9","#565678","Medias","Argentina","5500","media","nike"));
-        elements.add(new ListElement("10","#565678","Gorro","Argentina","3650","gorro","adidas"));
+        botonCarrito=rootView.findViewById(R.id.buttonCarrito);
+        botonLogout=rootView.findViewById(R.id.buttonLogout);
+        accionBotonCarrito();
+        accionBotonLogout();
+        elements.add(new ListElement("1","Pantalon","Argentina","10000","pantalon","nike"));
+        elements.add(new ListElement("2","Remera","bolivia","5000","remera","adidas"));
+        elements.add(new ListElement("3","Ojotas","brasil","2000","ojotas","nike"));
+        elements.add(new ListElement("4","Zapatillas","Argentina","20000","zapatillas","adidas"));
+        elements.add(new ListElement("5","Camisa","Argentina","15000","camisa","nike"));
+        elements.add(new ListElement("6","Corbata","Argentina","6500","corbata","adidas"));
+        elements.add(new ListElement("7","Chaqueta","Argentina","14400","chaqueta","Arg"));
+        elements.add(new ListElement("8","Campera","Argentina","30000","campera","nike"));
+        elements.add(new ListElement("9","Medias","Argentina","5500","media","nike"));
+        elements.add(new ListElement("10","Gorro","Argentina","3650","gorro","adidas"));
         Context context=getActivity();
         listAdapter=new ListAdapter(elements, context, new ListAdapter.OnItemClickListener() {
             @Override
@@ -101,5 +116,28 @@ public class HomeFragment extends Fragment  {
         Intent intent=new Intent(getContext(), DescriptionActivity.class);
         intent.putExtra("ListElement",item);
         startActivity(intent);
+    }
+    private void accionBotonCarrito(){
+        botonCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CartFragment cartFragment = new CartFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, cartFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+    }
+
+    private void accionBotonLogout(){
+        botonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArchivoTXTController.resetearTXT(getActivity());
+                ActivityController.abrirLogin(getActivity());
+                Toast.makeText(getActivity(), "Logout!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -5,25 +5,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".fragment.HomeFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
         app:iconifiedByDefault="false"
-        app:queryHint="Buscar producto"/>
+        app:layout_constraintEnd_toStartOf="@+id/buttonCarrito"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Buscar producto" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/searchView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="405dp"
+        android:layout_height="522dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/searchView" />
+
+    <Button
+        android:id="@+id/buttonCarrito"
+        android:layout_width="55dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/carritoimg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:text="Logout"
+        android:background="@color/lavender"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listRecyclerView"
+        app:layout_constraintVertical_bias="0.422" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

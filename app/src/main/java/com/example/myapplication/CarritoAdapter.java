@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.CollationElementIterator;
 import java.util.List;
 
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.myapplication.fragment.CartFragment;
 
 
 public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHolder> {

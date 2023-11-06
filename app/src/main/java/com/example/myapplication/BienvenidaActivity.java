@@ -32,7 +32,6 @@ public class BienvenidaActivity extends AppCompatActivity {
             public void run() {
                 valorArchivo= ArchivoTXTController.archivoExistente(archivos, VariablesGlobales.rutaUsuario);
                 valorArchivo=ArchivoTXTController.archivoExistente(archivos,VariablesGlobales.rutaUsuario);
-                Toast.makeText(BienvenidaActivity.this," "+valorArchivo,Toast.LENGTH_SHORT).show();
                 valorTXT=ArchivoTXTController.verificarTXT(BienvenidaActivity.this," ");
                 ActivityController.abrirActivity(BienvenidaActivity.this,valorArchivo,valorTXT,"matias",VariablesGlobales.administrador);
                 //Cierra MainActivity para que no pueda volver atrás con el botón "Atrás"
