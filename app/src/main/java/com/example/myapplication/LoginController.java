@@ -20,7 +20,7 @@ public class LoginController {
         String nombre=username.getText().toString();
         if (valor){
             try {
-                OutputStreamWriter datoUsuario=new OutputStreamWriter(context.openFileOutput(VariablesGlobales.rutaUsuario, Activity.MODE_PRIVATE));
+                OutputStreamWriter datoUsuario=new OutputStreamWriter(context.openFileOutput(VariablesGlobales.PREF_NAME, Activity.MODE_PRIVATE));
                 datoUsuario.write(username.getText().toString());
                 datoUsuario.flush();
                 datoUsuario.close();

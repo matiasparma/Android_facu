@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.myapplication.ActivityController;
+import com.example.myapplication.ArchivoTXTController;
+import com.example.myapplication.R;
 import com.example.myapplication.fragment.AboutFragment;
 import com.example.myapplication.fragment.CartFragment;
 import com.example.myapplication.fragment.HomeFragment;

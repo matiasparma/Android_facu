@@ -1,17 +1,17 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import com.example.myapplication.ActivityController;
+import com.example.myapplication.ArchivoTXTController;
+import com.example.myapplication.R;
+import com.example.myapplication.TokenManager;
+import com.example.myapplication.VariablesGlobales;
 
 public class BienvenidaActivity extends AppCompatActivity {
     boolean valorArchivo;
@@ -30,10 +30,13 @@ public class BienvenidaActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                valorArchivo= ArchivoTXTController.archivoExistente(archivos, VariablesGlobales.rutaUsuario);
-                valorArchivo=ArchivoTXTController.archivoExistente(archivos,VariablesGlobales.rutaUsuario);
-                valorTXT=ArchivoTXTController.verificarTXT(BienvenidaActivity.this," ");
-                ActivityController.abrirActivity(BienvenidaActivity.this,valorArchivo,valorTXT,"matias",VariablesGlobales.administrador);
+
+                valorArchivo=ArchivoTXTController.archivoExistente(archivos,VariablesGlobales.PREF_NAME);
+               // valorTXT=ArchivoTXTController.verificarTXT(BienvenidaActivity.this," ");
+                TokenManager tokenManager=TokenManager.getInstance(BienvenidaActivity.this);
+                String token=tokenManager.getToken();
+                Toast.makeText(BienvenidaActivity.this, ""+token, Toast.LENGTH_SHORT).show();
+                ActivityController.abrirActivity(BienvenidaActivity.this,valorArchivo,valorTXT,token);
                 //Cierra MainActivity para que no pueda volver atrás con el botón "Atrás"
                 finish();
             }

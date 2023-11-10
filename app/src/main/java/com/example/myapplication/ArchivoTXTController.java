@@ -31,7 +31,7 @@ public class ArchivoTXTController {
     public static boolean verificarTXT(Context context, String valorStringTXT){
         boolean valorTxt=true;
         try {
-            InputStreamReader archivo=new InputStreamReader(context.openFileInput(VariablesGlobales.rutaUsuario));
+            InputStreamReader archivo=new InputStreamReader(context.openFileInput(VariablesGlobales.PREF_NAME));
             BufferedReader br=new BufferedReader(archivo);
             String valorLinea=br.readLine().toString();
             if(valorLinea.equals(valorStringTXT)) valorTxt=false;
@@ -46,7 +46,8 @@ public class ArchivoTXTController {
 
     public static void resetearTXT(Context context){
         try {
-            OutputStreamWriter datoUsuario=new OutputStreamWriter(context.openFileOutput(VariablesGlobales.rutaUsuario, Activity.MODE_PRIVATE));
+            OutputStreamWriter datoUsuario=new OutputStreamWriter(context.openFileOutput(VariablesGlobales.PREF_NAME, Activity.MODE_PRIVATE));
+            Toast.makeText(context, ""+VariablesGlobales.PREF_NAME, Toast.LENGTH_SHORT).show();
             datoUsuario.write(" ");
             datoUsuario.flush();
             datoUsuario.close();

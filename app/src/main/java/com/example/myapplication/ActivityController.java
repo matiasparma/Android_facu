@@ -2,6 +2,10 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
+
+import com.example.myapplication.activity.LoginActivity;
+import com.example.myapplication.activity.MainActivity;
 
 public class ActivityController {
     public static void abrirMain(Context context){
@@ -18,10 +22,10 @@ public class ActivityController {
         if (username.equals(nombreAcomparar)) abrirMain(context);
         else abrirLogin(context);
     }
-    public static void abrirActivity(Context context, boolean validacionArchivo,boolean validacionTXT,String username,String administrador){
-        if(!validacionArchivo || validacionTXT){
+    public static void abrirActivity(Context context, boolean validacionArchivo,boolean validacionTXT,String token){
+        Toast.makeText(context, ""+token, Toast.LENGTH_SHORT).show();
+        if(!validacionArchivo && token!=null){
            abrirMain(context);
-            // abrirClienteOHome(username,administrador,context);
         }
         else{
             abrirLogin(context);

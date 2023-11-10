@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.EventLogTags;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,8 @@ import android.widget.Toast;
 
 import com.example.myapplication.ActivityController;
 import com.example.myapplication.ArchivoTXTController;
-import com.example.myapplication.DescriptionActivity;
+import com.example.myapplication.TokenManager;
+import com.example.myapplication.activity.DescriptionActivity;
 import com.example.myapplication.ListAdapter;
 import com.example.myapplication.ListElement;
 import com.example.myapplication.R;
@@ -134,7 +134,8 @@ public class HomeFragment extends Fragment  {
         botonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArchivoTXTController.resetearTXT(getActivity());
+                TokenManager tokenManager=TokenManager.getInstance(getContext());
+                tokenManager.clearToken();
                 ActivityController.abrirLogin(getActivity());
                 Toast.makeText(getActivity(), "Logout!", Toast.LENGTH_SHORT).show();
             }

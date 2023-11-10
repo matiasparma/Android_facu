@@ -8,7 +8,7 @@
     android:foregroundTint="@color/white"
 
 
-    tools:context=".LoginActivity">
+    tools:context=".activity.LoginActivity">
 
 
     <EditText
@@ -53,7 +53,7 @@
         android:layout_marginTop="104dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/btn_login"
-        android:onClick="guardarDatos"
+        android:onClick="login"
         android:text="@string/btn_botonLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

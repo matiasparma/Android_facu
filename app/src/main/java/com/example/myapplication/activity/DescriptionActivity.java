@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,6 +13,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Carrito;
+import com.example.myapplication.DDBBCarrito;
+import com.example.myapplication.ListElement;
+import com.example.myapplication.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
