@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.myapplication.MyApiManager;
+import com.example.myapplication.controller.MyApiManager;
 import com.example.myapplication.R;
-import com.example.myapplication.TokenManager;
+import com.example.myapplication.controller.TokenManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +23,11 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     EditText usernameEditText;
     EditText passwordEditText;
+    JSONObject userData;
+
+    private int id;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +63,10 @@ public class LoginActivity extends AppCompatActivity {
                             int ok = jsonResponse.getInt("ok");
 
                             if (ok == 1) {
-                                JSONObject userData = jsonResponse.getJSONObject("data");
+                                userData = jsonResponse.getJSONObject("data");
                                 String usuario = userData.getString("usuario");
                                 String token = userData.getString("token");
-
+                                id=userData.getInt("PK_id_usuario");
 
                                 //realizar acciones adicionales, como guardar el token en SharedPreferences
                                 TokenManager tokenManager = TokenManager.getInstance(LoginActivity.this);
@@ -89,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                         // Manejar errores en la solicitud aquí
                         Toast.makeText(LoginActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
                     }
+
                 }
         );
     }

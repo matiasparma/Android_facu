@@ -1,9 +1,9 @@
 package com.example.myapplication.activity;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,27 +13,35 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Carrito;
-import com.example.myapplication.DDBBCarrito;
+import com.example.myapplication.modelo.Carrito;
+import com.example.myapplication.datos.DDBBCarrito;
 import com.example.myapplication.ListElement;
 import com.example.myapplication.R;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Type;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 public class DescriptionActivity extends AppCompatActivity{
     TextView titleDescriptionTextView;
     TextView cityDescriptionTextView;
     TextView precioDescriptionTextView;
     TextView codigoDescriptionTextView;
+    Carrito carrito;
+    private static final String API_URL = "https://pmgh24ms-3000.brs.devtunnels.ms/orders/create";
 
     private ArrayList<Carrito> elementosCarrito = new ArrayList<>();
+    private List<Map<String, Object>> data = new ArrayList<>();
 
 
     Spinner spinner;
@@ -79,20 +87,71 @@ public class DescriptionActivity extends AppCompatActivity{
         spinner.setAdapter(adapterCant);
     }
 
-    public void elementosDescripcion(View v) {
+    public void elementosDescripcion(View v) throws JSONException {
         String nombre = titleDescriptionTextView.getText().toString();
         String selectedValueStr = (String) spinner.getSelectedItem();
         int cantidad = Integer.parseInt(selectedValueStr);
         double precio = Double.parseDouble(precioDescriptionTextView.getText().toString());
         int codigo=Integer.parseInt(codigoDescriptionTextView.getText().toString());
         DDBBCarrito.registrar(this,codigo,nombre,precio,cantidad,"","");
+        String codstr=String.valueOf(codigo);
+        carrito=new Carrito(codstr,precio,cantidad);
+        elementosCarrito.add(carrito);
 
+        Toast.makeText(this, "Agregado al carrito de compras", Toast.LENGTH_SHORT).show();
+
+    }
+    public void crearJson(double total,Context context){
+        // Suponiendo que ya tienes elementosCarrito lleno
+        JSONArray jsonArray = new JSONArray();
+        for (Carrito carritoItem : elementosCarrito) {
+            JSONObject jsonItem = new JSONObject();
+            try {
+                jsonItem.put("id_articulo", Integer.parseInt(carritoItem.getCodigo()));
+                jsonItem.put("amount", carritoItem.getPrecio());
+                jsonItem.put("quantity", carritoItem.getCantidad());
+                jsonArray.put(jsonItem);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+// JSON final
+        JSONObject jsonFinal = new JSONObject();
+        try {
+            jsonFinal.put("id_sucursal", 1);
+            jsonFinal.put("id_cliente", 4);
+            jsonFinal.put("total_amount", total);
+            jsonFinal.put("data", jsonArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+        // Crear la solicitud POST
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, API_URL, jsonFinal,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Manejar la respuesta exitosa
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Manejar errores de la solicitud
+                        Log.e("ApiRequest", "Error en la solicitud", error);
+
+                    }
+                });
+
+        // Agregar la solicitud a la cola
+        requestQueue.add(jsonObjectRequest);
+    }
     }
 
 
-    public void borrarElementos(View v) {
-        DDBBCarrito.eliminarBD(this);
-    }
 
-}
+
 

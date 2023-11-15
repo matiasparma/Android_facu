@@ -1,8 +1,10 @@
-package com.example.myapplication;
+package com.example.myapplication.controller;
 
 import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
+
+import com.example.myapplication.VariablesGlobales;
 
 import java.io.BufferedReader;
 import java.io.File;

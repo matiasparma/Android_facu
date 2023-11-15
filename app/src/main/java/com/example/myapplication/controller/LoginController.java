@@ -1,9 +1,12 @@
-package com.example.myapplication;
+package com.example.myapplication.controller;
 
 import android.app.Activity;
 import android.content.Context;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.myapplication.VariablesGlobales;
+import com.example.myapplication.controller.ActivityController;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

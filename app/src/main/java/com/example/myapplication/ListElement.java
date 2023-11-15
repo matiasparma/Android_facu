@@ -35,6 +35,7 @@ public class ListElement implements Serializable {
     public String getCodigo() {
         return codigo;
     }
+    public ListElement(){}
 
     public ListElement(String codigo, String nombre, String city, String precio, String desc, String marca) {
 

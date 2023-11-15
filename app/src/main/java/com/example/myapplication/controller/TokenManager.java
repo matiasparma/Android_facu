@@ -1,6 +1,8 @@
-package com.example.myapplication;
+package com.example.myapplication.controller;
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.example.myapplication.VariablesGlobales;
 
 public class TokenManager {
     private static final String KEY_TOKEN = "token";

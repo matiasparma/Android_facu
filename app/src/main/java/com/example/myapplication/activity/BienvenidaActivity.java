@@ -5,12 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.myapplication.ActivityController;
-import com.example.myapplication.ArchivoTXTController;
+import com.example.myapplication.controller.ActivityController;
+import com.example.myapplication.controller.ArchivoTXTController;
 import com.example.myapplication.R;
-import com.example.myapplication.TokenManager;
+import com.example.myapplication.controller.TokenManager;
 import com.example.myapplication.VariablesGlobales;
 
 public class BienvenidaActivity extends AppCompatActivity {
@@ -35,7 +34,6 @@ public class BienvenidaActivity extends AppCompatActivity {
                // valorTXT=ArchivoTXTController.verificarTXT(BienvenidaActivity.this," ");
                 TokenManager tokenManager=TokenManager.getInstance(BienvenidaActivity.this);
                 String token=tokenManager.getToken();
-                Toast.makeText(BienvenidaActivity.this, ""+token, Toast.LENGTH_SHORT).show();
                 ActivityController.abrirActivity(BienvenidaActivity.this,valorArchivo,valorTXT,token);
                 //Cierra MainActivity para que no pueda volver atrás con el botón "Atrás"
                 finish();

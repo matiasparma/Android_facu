@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +23,6 @@ public class ActivityController {
         else abrirLogin(context);
     }
     public static void abrirActivity(Context context, boolean validacionArchivo,boolean validacionTXT,String token){
-        Toast.makeText(context, ""+token, Toast.LENGTH_SHORT).show();
         if(!validacionArchivo && token!=null){
            abrirMain(context);
         }

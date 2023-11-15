@@ -1,8 +1,5 @@
 package com.example.myapplication.fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,17 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.myapplication.Carrito;
-import com.example.myapplication.CarritoAdapter;
-import com.example.myapplication.DDBBCarrito;
+import com.example.myapplication.modelo.Carrito;
+import com.example.myapplication.Adapter.CarritoAdapter;
+import com.example.myapplication.datos.DDBBCarrito;
 import com.example.myapplication.R;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.example.myapplication.activity.DescriptionActivity;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -63,15 +56,19 @@ public class CartFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Carritototal(view);
+                CarritototalJson(view);
             }
         });
+    }
+    public void CarritototalJson(View v){
+        double totalDouble=DDBBCarrito.obtenertotal(getActivity());
+        //Toast.makeText(getActivity(), ""+totalDouble, Toast.LENGTH_SHORT).show();
+        DescriptionActivity descriptionActivity=new DescriptionActivity();
+        descriptionActivity.crearJson(totalDouble,getActivity());
     }
     public void Carritototal(View v){
         double totalDouble=DDBBCarrito.obtenertotal(getActivity());
         totalString.setText(String.valueOf(totalDouble));
-
-
     }
 
 }

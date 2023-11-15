@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +12,9 @@ import java.util.List;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.myapplication.modelo.Carrito;
+import com.example.myapplication.datos.DDBBCarrito;
+import com.example.myapplication.R;
 import com.example.myapplication.fragment.CartFragment;
 
 

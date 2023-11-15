@@ -17,12 +17,12 @@
 
         <ImageView
             android:id="@+id/iconImageView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="150dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
-            app:srcCompat="@drawable/autoparte" />
+            app:srcCompat="@drawable/img_autoparte" />
 
         <LinearLayout
             android:id="@+id/linearLayout"

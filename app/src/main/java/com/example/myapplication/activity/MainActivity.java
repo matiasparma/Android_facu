@@ -11,8 +11,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.myapplication.ActivityController;
-import com.example.myapplication.ArchivoTXTController;
+import com.example.myapplication.controller.ActivityController;
+import com.example.myapplication.controller.ArchivoTXTController;
 import com.example.myapplication.R;
 import com.example.myapplication.fragment.AboutFragment;
 import com.example.myapplication.fragment.CartFragment;

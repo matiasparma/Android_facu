@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.modelo;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ public class Carrito implements Serializable {
         public String color;
         public double precio;
 
-        public double cantidad;
+        public int cantidad;
 
         public String descripcion;
         public String marca;
@@ -37,7 +37,7 @@ public class Carrito implements Serializable {
         return codigo;
     }
 
-    public Carrito(String codigo, String nombre, double precio, double cantidad, String desc, String marca) {
+    public Carrito(String codigo, String nombre, double precio, int cantidad, String desc, String marca) {
             this.nombre = nombre;
             this.precio = precio;
             this.cantidad = cantidad;
@@ -45,6 +45,11 @@ public class Carrito implements Serializable {
             this.marca=marca;
             this.codigo=codigo;
             this.total = precio * cantidad;
+        }
+        public Carrito(String codigo,  double precio,int cantidad){
+        this.codigo=codigo;
+        this.cantidad=cantidad;
+        this.precio=precio;
         }
 
         public void setNombre(String nombre) {
@@ -73,11 +78,11 @@ public class Carrito implements Serializable {
             return color;
         }
 
-    public double getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(double cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 

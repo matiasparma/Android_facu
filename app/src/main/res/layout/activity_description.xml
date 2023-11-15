@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:text="Descripcion"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="50sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
