@@ -11,9 +11,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.myapplication.controller.ActivityController;
-import com.example.myapplication.controller.ArchivoTXTController;
+import com.example.myapplication.Adapter.controller.ActivityController;
 import com.example.myapplication.R;
+import com.example.myapplication.Adapter.controller.TokenManager;
 import com.example.myapplication.fragment.AboutFragment;
 import com.example.myapplication.fragment.CartFragment;
 import com.example.myapplication.fragment.HomeFragment;
@@ -61,7 +61,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (itemId == R.id.nav_about) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
         } else if (itemId == R.id.nav_logout) {
-            ArchivoTXTController.resetearTXT(this);
+           /* ArchivoTXTController.resetearTXT(this);
+            ActivityController.abrirLogin(this);
+            Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();*/
+            TokenManager tokenManager=TokenManager.getInstance(this);
+            tokenManager.clearToken();
             ActivityController.abrirLogin(this);
             Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();
         }

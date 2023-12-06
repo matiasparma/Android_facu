@@ -18,9 +18,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.example.myapplication.controller.ActivityController;
 import com.example.myapplication.ProductosAPI;
-import com.example.myapplication.controller.TokenManager;
 import com.example.myapplication.activity.DescriptionActivity;
 import com.example.myapplication.Adapter.ListAdapter;
 import com.example.myapplication.ListElement;
@@ -59,9 +57,9 @@ public class HomeFragment extends Fragment implements ProductosAPI.ProductosCall
         elements=new ArrayList<>();
         elements2 = new ArrayList<>();
         botonCarrito=rootView.findViewById(R.id.buttonCarrito);
-        botonLogout=rootView.findViewById(R.id.buttonLogout);
+        //botonLogout=rootView.findViewById(R.id.buttonLogout);
         accionBotonCarrito();
-        accionBotonLogout();
+        //accionBotonLogout();
 
         Context context=getActivity();
         requestQueue= Volley.newRequestQueue(context);
@@ -118,17 +116,6 @@ public class HomeFragment extends Fragment implements ProductosAPI.ProductosCall
         });
     }
 
-    private void accionBotonLogout(){
-        botonLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TokenManager tokenManager=TokenManager.getInstance(getContext());
-                tokenManager.clearToken();
-                ActivityController.abrirLogin(getActivity());
-                Toast.makeText(getActivity(), "Logout!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @Override
     public void onSuccess(ArrayList<ListElement> listElements) {

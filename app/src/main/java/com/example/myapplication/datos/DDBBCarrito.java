@@ -86,6 +86,39 @@ public class DDBBCarrito {
 
         return total;
     }
+    public static boolean tieneElementos(Context context) {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "Articulos", null, 1);
+        SQLiteDatabase baseDeDatos = admin.getReadableDatabase();
+        Cursor cursor = baseDeDatos.query("articulos", null, null, null, null, null, null);
+
+        boolean tieneElementos = false;
+
+        if (cursor != null) {
+            tieneElementos = cursor.moveToFirst();
+            cursor.close();
+        }
+
+        baseDeDatos.close();
+
+        return tieneElementos;
+    }
+    public static int obtenerCantidadElementos(Context context) {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "Articulos", null, 1);
+        SQLiteDatabase baseDeDatos = admin.getReadableDatabase();
+        Cursor cursor = baseDeDatos.query("articulos", null, null, null, null, null, null);
+
+        int cantidadElementos = 0;
+
+        if (cursor != null) {
+            cantidadElementos = cursor.getCount();
+            cursor.close();
+        }
+
+        baseDeDatos.close();
+
+        return cantidadElementos;
+    }
+
 }
 
 

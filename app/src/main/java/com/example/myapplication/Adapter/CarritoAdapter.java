@@ -38,6 +38,9 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
         this.elementosCarrito = elementosCarrito;
         notifyDataSetChanged(); // Notificar al adaptador de que los datos han cambiado
     }
+    public List<Carrito> getItems() {
+        return elementosCarrito;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {

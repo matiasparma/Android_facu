@@ -10,9 +10,12 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.myapplication.controller.MyApiManager;
+import com.example.myapplication.Adapter.controller.ActivityController;
+import com.example.myapplication.Adapter.controller.MyApiManager;
 import com.example.myapplication.R;
-import com.example.myapplication.controller.TokenManager;
+import com.example.myapplication.Adapter.controller.TokenManager;
+import com.example.myapplication.Adapter.controller.nombreManager;
+import com.example.myapplication.datos.DDBBCarrito;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,9 +75,14 @@ public class LoginActivity extends AppCompatActivity {
                                 TokenManager tokenManager = TokenManager.getInstance(LoginActivity.this);
                                 tokenManager.saveToken(token);
                                 // próxima pantalla de la aplicación
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.putExtra("token", token);
-                                startActivity(intent);
+                                boolean idCliente= DDBBCarrito.tieneElementos(LoginActivity.this);
+                                if(!idCliente) ActivityController.abrirCliente(LoginActivity.this);
+                                else{
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    intent.putExtra("token", token);
+                                    startActivity(intent);
+                                }
+
                                 finish();
                             } else {
                                 // La solicitud fue exitosa, pero el "ok" no es igual a 1, lo que podría indicar un error en el servidor
