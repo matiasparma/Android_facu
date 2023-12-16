@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".activity.DescriptionActivity">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGomain"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/mySpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_comprar"
+        android:backgroundTint="#C1BFC2"
+        android:onClick="abrirCarrito"
+        android:text="Volver al Menu"
+        android:textStyle="bold"
+        android:textColor="@color/white" />
+
     <TextView
         android:id="@+id/titleDescriptionTextView"
         android:layout_width="wrap_content"
@@ -101,30 +116,19 @@
         android:background="@drawable/dis_spinner" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnBuyNow"
+        android:id="@+id/btnGoCart"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/mySpinner"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="37dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/btn_comprar"
-        android:text="Comprar ahora"
+        android:onClick="elementosDescripcion"
+        android:text="Agregar al carrito"
         android:textColor="@color/white" />
 
     <!-- Botón "Agregar al Carrito" -->
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnAddToCart"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/btnBuyNow"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/btn_carrito"
-        android:onClick="elementosDescripcion"
-        android:text="Agregar al carrito"
-        android:textColor="#575DEF" />
 
 </RelativeLayout>
 

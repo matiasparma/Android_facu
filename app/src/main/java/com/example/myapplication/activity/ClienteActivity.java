@@ -2,6 +2,7 @@ package com.example.myapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.example.myapplication.Adapter.ClienteAPI;
@@ -12,12 +13,14 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.example.myapplication.Adapter.controller.ActivityController;
-import com.example.myapplication.Adapter.controller.nombreManager;
+import com.example.myapplication.controller.ActivityController;
+import com.example.myapplication.controller.nombreManager;
 import com.example.myapplication.modelo.Cliente;
 
 import java.util.ArrayList;
@@ -33,11 +36,15 @@ public class ClienteActivity extends AppCompatActivity implements ClienteAPI.Cli
     RequestQueue requestQueue;
 
     ClienteAPI clienteAPI;
+    Button btnCancelar;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
+        btnCancelar=findViewById(R.id.btnCancelar);
+        botonCancelar();
         init();
     }
     private List listaClientes(){
@@ -49,7 +56,6 @@ public class ClienteActivity extends AppCompatActivity implements ClienteAPI.Cli
         return elements;
     }
     private void init(){
-
         recyclerView=findViewById(R.id.recyclerView);
        /* adapter=new ClienteAdapter(listaClientes(), this, new ClienteAdapter.OnItemClickListener() {
             @Override
@@ -65,6 +71,14 @@ public class ClienteActivity extends AppCompatActivity implements ClienteAPI.Cli
         filtro();
 
 
+    }
+    public void botonCancelar(){
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityController.abrirMain(ClienteActivity.this);
+            }
+        });
     }
     private void filtro(){
         searchView = findViewById(R.id.searchView);
@@ -98,6 +112,7 @@ public class ClienteActivity extends AppCompatActivity implements ClienteAPI.Cli
         }
     }
 
+
     @Override
     public void onSuccess(ArrayList<Cliente> listElements) {
         elements2=listElements;
@@ -121,4 +136,5 @@ public class ClienteActivity extends AppCompatActivity implements ClienteAPI.Cli
     public void onError(String errorMessage) {
 
     }
+
 }

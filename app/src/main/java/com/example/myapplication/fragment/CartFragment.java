@@ -1,5 +1,6 @@
 package com.example.myapplication.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,10 +15,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.Adapter.controller.nombreManager;
+import com.example.myapplication.activity.CarritoVacio;
+import com.example.myapplication.controller.nombreManager;
 import com.example.myapplication.ApiClient;
 import com.example.myapplication.Pedido;
-import com.example.myapplication.activity.ClienteActivity;
 import com.example.myapplication.modelo.ArticuloPedido;
 import com.example.myapplication.modelo.Carrito;
 import com.example.myapplication.Adapter.CarritoAdapter;
@@ -42,9 +43,26 @@ public class CartFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+       // boolean tieneElementos= DDBBCarrito.tieneElementos(getActivity());
         rootView = inflater.inflate(R.layout.fragment_cart, container, false);
         init();
         return rootView;
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        boolean tieneElementos = DDBBCarrito.tieneElementos(getActivity());
+
+        if (!tieneElementos) {
+            // No hay elementos en el carrito, abre una nueva Activity
+            abrirMain(getActivity());
+        }
+    }
+    public void abrirMain(Activity activity) {
+        Intent intent = new Intent(getActivity(), CarritoVacio.class);
+        startActivity(intent);
+        activity.finish(); // Opcional: cierra la actividad actual si es necesario
     }
 
     public void init() {
@@ -107,7 +125,7 @@ public class CartFragment extends Fragment {
         double totalDouble=DDBBCarrito.obtenertotal(getActivity());
         totalString.setText(String.valueOf(totalDouble));
     }
-    private void clientCantid(){
+    public void clientCantid(){
         nombreManager manager=new nombreManager(getActivity());
         String cliente=manager.obtenerTexto();
         clienteId.setText(cliente);

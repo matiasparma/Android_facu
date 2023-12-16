@@ -1,5 +1,6 @@
 package com.example.myapplication.Adapter;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.modelo.Carrito;
 import com.example.myapplication.datos.DDBBCarrito;
@@ -62,6 +64,10 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
                     elementosCarrito.remove(adapterPosition);
                     notifyItemRemoved(adapterPosition);
                     fragment.Carritototal(v);
+                    fragment.clientCantid();
+                    boolean carrito=DDBBCarrito.tieneElementos(v.getContext());
+                    Activity activity=fragment.getActivity();
+                    if(!carrito) fragment.abrirMain(activity);
                 }
             }
         });

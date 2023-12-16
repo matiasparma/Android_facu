@@ -48,8 +48,6 @@ public class HomeFragment extends Fragment implements ProductosAPI.ProductosCall
         searchView = rootView.findViewById(R.id.searchView);
         searchView.clearFocus();
 
-
-
         init();
         return rootView;
     }

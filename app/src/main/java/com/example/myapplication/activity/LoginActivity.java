@@ -10,11 +10,10 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.myapplication.Adapter.controller.ActivityController;
-import com.example.myapplication.Adapter.controller.MyApiManager;
+import com.example.myapplication.controller.ActivityController;
+import com.example.myapplication.controller.MyApiManager;
 import com.example.myapplication.R;
-import com.example.myapplication.Adapter.controller.TokenManager;
-import com.example.myapplication.Adapter.controller.nombreManager;
+import com.example.myapplication.controller.TokenManager;
 import com.example.myapplication.datos.DDBBCarrito;
 
 import org.json.JSONException;

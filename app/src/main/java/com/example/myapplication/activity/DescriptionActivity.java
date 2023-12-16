@@ -7,12 +7,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
 
+
+import com.example.myapplication.controller.ActivityController;
+import com.example.myapplication.fragment.CartFragment;
 import com.example.myapplication.modelo.Carrito;
 import com.example.myapplication.datos.DDBBCarrito;
 import com.example.myapplication.ListElement;
@@ -38,6 +42,7 @@ public class DescriptionActivity extends AppCompatActivity{
     TextView precioDescriptionTextView;
     TextView codigoDescriptionTextView;
     Carrito carrito;
+
     private static final String API_URL = "https://pmgh24ms-3000.brs.devtunnels.ms/orders/create";
 
     private ArrayList<Carrito> elementosCarrito = new ArrayList<>();
@@ -51,6 +56,7 @@ public class DescriptionActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
+
 
         ListElement element = (ListElement) getIntent().getSerializableExtra("ListElement");
         titleDescriptionTextView = findViewById(R.id.titleDescriptionTextView);
@@ -66,6 +72,7 @@ public class DescriptionActivity extends AppCompatActivity{
         precioDescriptionTextView.setText(element.getPrecio());
         precioDescriptionTextView.setTextColor(Color.GRAY);
         codigoDescriptionTextView.setText(element.getCodigo());
+
 
         String[] cantidades = {"1", "2", "3", "4", "5", "6"};
         ArrayAdapter<String> adapterCant = new ArrayAdapter<>(this, R.layout.list_cantidad, cantidades);
@@ -87,6 +94,10 @@ public class DescriptionActivity extends AppCompatActivity{
         spinner.setAdapter(adapterCant);
     }
 
+
+
+
+
     public void elementosDescripcion(View v) throws JSONException {
         String nombre = titleDescriptionTextView.getText().toString();
         String selectedValueStr = (String) spinner.getSelectedItem();
@@ -100,6 +111,10 @@ public class DescriptionActivity extends AppCompatActivity{
 
         Toast.makeText(this, "Agregado al carrito de compras", Toast.LENGTH_SHORT).show();
 
+    }
+    public void abrirCarrito(View v) {
+
+        ActivityController.abrirMain(this);
     }
     public void crearJson(double total,Context context){
         // Suponiendo que ya tienes elementosCarrito lleno

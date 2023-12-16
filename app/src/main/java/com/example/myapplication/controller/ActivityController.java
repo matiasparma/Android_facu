@@ -1,14 +1,21 @@
-package com.example.myapplication.Adapter.controller;
+package com.example.myapplication.controller;
 
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.myapplication.R;
 import com.example.myapplication.VariablesGlobales;
 import com.example.myapplication.activity.ClienteActivity;
 import com.example.myapplication.activity.LoginActivity;
 import com.example.myapplication.activity.MainActivity;
 import com.example.myapplication.datos.DDBBCarrito;
+import com.example.myapplication.fragment.CartFragment;
 
 public class ActivityController {
     public static void abrirMain(Context context){
@@ -52,5 +59,7 @@ public class ActivityController {
         abreCliente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(abreCliente);
     }
+
+
 
 }

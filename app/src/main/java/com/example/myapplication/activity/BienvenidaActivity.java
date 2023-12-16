@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
-import com.example.myapplication.Adapter.controller.ActivityController;
-import com.example.myapplication.Adapter.controller.ArchivoTXTController;
+import com.example.myapplication.controller.ActivityController;
+import com.example.myapplication.controller.ArchivoTXTController;
 import com.example.myapplication.R;
-import com.example.myapplication.Adapter.controller.TokenManager;
+import com.example.myapplication.controller.TokenManager;
 import com.example.myapplication.VariablesGlobales;
 
 public class BienvenidaActivity extends AppCompatActivity {
