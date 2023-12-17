@@ -1,4 +1,5 @@
-package com.example.myapplication.Adapter;
+package com.example.myapplication;
+
 import android.content.Context;
 
 import com.android.volley.Request;
@@ -7,7 +8,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.myapplication.controller.TokenManager;
-import com.example.myapplication.modelo.Cliente;
+import com.example.myapplication.modelo.Pedido;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,19 +16,19 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-public class ClienteAPI {
-    public interface ClienteCallback {
-        void onSuccess(ArrayList<Cliente> listElements);
+
+public class PedidosAPI {
+    public interface PedidoCallback {
+        void onSuccess(ArrayList<Pedido> listaPedidos);
         void onError(String errorMessage);
     }
 
-    //  private static final String stringurl1 = "https://my-json-server.typicode.com/typicode/demo/comments";
-    //private static final String stringurl1 = "https://pmgh24ms-3000.brs.devtunnels.ms/productos/getAll/?id=3&cant=10&page=0";
-    private static final String stringurl1 = "https://pmgh24ms-3000.brs.devtunnels.ms/users/allUsers";
+    private static final String stringurl1 = "https://pmgh24ms-3000.brs.devtunnels.ms/orders/?page=1&cant=1000";
 
-    public void makeRequest(RequestQueue requestQueue, Context context, ClienteAPI.ClienteCallback callback) {
-        ArrayList<Cliente> listElements = new ArrayList<>();
+    public void makeRequest(RequestQueue requestQueue, Context context, PedidoCallback callback) {
+        ArrayList<Pedido> listaPedidos = new ArrayList<>();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 stringurl1,
@@ -38,25 +39,23 @@ public class ClienteAPI {
                             JSONObject jsonResponse = new JSONObject(response);
                             int ok = jsonResponse.getInt("ok");
                             if (ok == 1) {
-                                JSONArray dataObject = jsonResponse.getJSONArray("data");
-                                //JSONArray productsArray = dataObject.getJSONArray("products");
+                                JSONArray data = jsonResponse.getJSONArray("data");
 
-                                for (int i = 0; i < dataObject.length(); i++) {
-                                    JSONObject productObject = dataObject.getJSONObject(i);
-                                    int id = productObject.getInt("id");
-                                    String codigo = productObject.getString("usuario");
-                                    String marca = productObject.getString("razon social");
+                                for (int i = 0; i < data.length(); i++) {
+                                    JSONObject pedidoObject = data.getJSONObject(i);
+                                    int numeroComprobante = pedidoObject.getInt("numero_comprobante");
+                                    int codigoUsuario = pedidoObject.getInt("codigo_usuario");
+                                    String codigoArticulo = pedidoObject.getString("codigo_articulo");
+                                    double precio = pedidoObject.getDouble("precio");
+                                    int cantidad = pedidoObject.getInt("cantidad");
+                                    String estado = pedidoObject.getString("estado");
 
-                                    String idS = String.valueOf(id);
-                                    String razonSocial = String.valueOf(codigo);
-                                    String tipoUsuario = marca;
-
-                                    Cliente listElement = new Cliente(idS,razonSocial,marca);
-                                    listElements.add(listElement);
+                                    Pedido pedido = new Pedido(numeroComprobante, codigoUsuario, codigoArticulo, precio, cantidad, estado);
+                                    listaPedidos.add(pedido);
                                 }
 
                                 // Éxito: llama al método onSuccess en el callback
-                                callback.onSuccess(listElements);
+                                callback.onSuccess(listaPedidos);
                             } else {
                                 // Manejar el caso en el que 'ok' no es 1
                                 callback.onError("Error en la respuesta del servidor");

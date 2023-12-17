@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.myapplication.R;
 import com.example.myapplication.VariablesGlobales;
 import com.example.myapplication.activity.ClienteActivity;
+import com.example.myapplication.activity.ContenidoPedidoActivity;
 import com.example.myapplication.activity.LoginActivity;
 import com.example.myapplication.activity.MainActivity;
 import com.example.myapplication.datos.DDBBCarrito;
@@ -46,7 +47,7 @@ public class ActivityController {
                 abrirMain(context);
             }
             VariablesGlobales.nombre =manager.obtenerTexto();
-            Toast.makeText(context, ""+VariablesGlobales.nombre, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, ""+VariablesGlobales.nombre, Toast.LENGTH_SHORT).show();
 
 
         }
@@ -58,6 +59,11 @@ public class ActivityController {
         Intent abreCliente = new Intent(context, ClienteActivity.class);
         abreCliente.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(abreCliente);
+    }
+    public static void abrirContenidoPedido(Context context){
+        Intent abrePedido = new Intent(context, ContenidoPedidoActivity.class);
+        abrePedido.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(abrePedido);
     }
 
 

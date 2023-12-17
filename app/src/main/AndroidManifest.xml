@@ -15,6 +15,9 @@
         android:theme="@style/Theme.NavigationDrawer"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ContenidoPedidoActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.CarritoVacio"
             android:exported="false" />
         <activity

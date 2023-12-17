@@ -29,6 +29,7 @@ public class SettingsFragment extends Fragment {
         btnVolver=rootView.findViewById(R.id.btnvolver);
         abrirClientes();
         voverMenu();
+        abrirPedidos();
         return rootView;
     }
     public void abrirClientes(){
@@ -43,7 +44,7 @@ public class SettingsFragment extends Fragment {
         btnPedidos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityController.abrirCliente(getContext());
+                ActivityController.abrirContenidoPedido(getContext());
             }
         });
     }
